@@ -1,0 +1,2 @@
+class JinshujuEntry < ApplicationRecord
+end
