@@ -10,7 +10,7 @@ class CheckinController < ApplicationController
   end
 
   def check_signup
-    jinshuju_entry = JinshujuEntry.exists?(params[:cellphone])
-
+    jinshuju_entry = JinshujuEntry.exists?(cellphone: params[:cellphone], form_id: params[:form_id])
+    jinshuju_entry ? (render status: :ok) : (render status: :not_found)
   end
 end

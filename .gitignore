@@ -18,5 +18,5 @@
 !/tmp/.keep
 tmp
 vendor
-.idea
+.idea/*
 .byebug_history
