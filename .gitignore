@@ -16,5 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+tmp
+vendor
+.idea
 .byebug_history
