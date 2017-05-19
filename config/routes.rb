@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :checkin
   resources :jinshuju_entries, only: [:index, :create, :destroy]
   get '/forms/:form_id/entries/:cellphone', to: 'checkin#check_signup', as: :check_signup
-  resources :activities, only: [:index, :create]
+  resources :activities, only: [:index, :create, :destroy]
 end

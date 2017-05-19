@@ -1,7 +1,7 @@
 class CheckinController < ApplicationController
   def index
-    test = {a: 1}
-    render json: test
+    form_id = params[:form_id]
+    render json: Checkin.where(form_id: form_id)
   end
 
   def create

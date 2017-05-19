@@ -8,4 +8,9 @@ class ActivitiesController < ApplicationController
     activity = Activity.create activity_params
     render json: activity, status: :created
   end
+
+  def destroy
+    id = params[:id]
+    Activity.destroy(id)
+  end
 end
