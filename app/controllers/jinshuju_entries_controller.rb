@@ -9,6 +9,11 @@ class JinshujuEntriesController < ApplicationController
     render status: :ok
   end
 
+  def destroy
+    id = params[:id]
+    JinshujuEntry.destroy(id)
+  end
+
   private
   def generate_entry
     {
@@ -20,7 +25,7 @@ class JinshujuEntriesController < ApplicationController
 
   def get_cellphone(entry)
     entry.each do |field|
-      if /^1[34578]\d{9}$/.match? entry[field]
+      if /^1[34578]\d{9}$/.match? entry[field].to_s
         return entry[field]
       end
     end
