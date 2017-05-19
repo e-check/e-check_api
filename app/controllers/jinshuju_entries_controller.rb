@@ -1,8 +1,12 @@
 class JinshujuEntriesController < ApplicationController
+  def index
+    render json: JinshujuEntry.all
+  end
+
   def create
     entry = generate_entry
     JinshujuEntry.create(entry)
-    render status: :no_content
+    render status: :ok
   end
 
   private

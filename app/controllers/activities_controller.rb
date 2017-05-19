@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def create
     activity_params = params.require('activity').permit(:name, :form_id)
-    Activity.create activity_params
+    activity = Activity.create activity_params
+    render json: activity, status: :created
   end
 end
