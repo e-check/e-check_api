@@ -10,19 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518094527) do
+ActiveRecord::Schema.define(version: 20170519090839) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.string "form_id"
+    t.string "name", null: false
+    t.string "form_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_activities_user_id"
+  end
+
+  create_table "attendances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", limit: 50, null: false
+    t.string "cellphone", limit: 20, null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "fk_attendances_activity_id"
   end
 
   create_table "checkins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", limit: 50
-    t.string "cellphone", limit: 20
-    t.string "form_id", limit: 50
+    t.string "name", limit: 50, null: false
+    t.string "cellphone", limit: 20, null: false
+    t.string "form_id", limit: 50, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,4 +46,13 @@ ActiveRecord::Schema.define(version: 20170518094527) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "email", null: false
+    t.string "password", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "activities", "users", name: "fk_activities_user_id"
+  add_foreign_key "attendances", "activities", name: "fk_attendances_activity_id"
 end
