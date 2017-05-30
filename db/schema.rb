@@ -28,14 +28,7 @@ ActiveRecord::Schema.define(version: 20170519090839) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "fk_attendances_activity_id"
-  end
-
-  create_table "checkins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", limit: 50, null: false
-    t.string "cellphone", limit: 20, null: false
-    t.string "form_id", limit: 50, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["cellphone", "activity_id"], name: "index_attendances_on_cellphone_and_activity_id", unique: true
   end
 
   create_table "jinshuju_entries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -48,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170519090839) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", null: false
-    t.string "password", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

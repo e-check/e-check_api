@@ -8,5 +8,6 @@ class CreateAttendances < ActiveRecord::Migration[5.1]
     end
 
     add_foreign_key :attendances, :activities, name: 'fk_attendances_activity_id'
+    add_index :attendances, %i[cellphone activity_id], unique: true
   end
 end

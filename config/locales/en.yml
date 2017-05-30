@@ -30,4 +30,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  '10101': "The activity id and cellphone already exist."
