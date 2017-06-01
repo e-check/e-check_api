@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get '/activities/:activity_id/people/:cellphone', to: 'activity_people#show', as: :activity_people
   resources :activities, only: %i[index create destroy]
   resources :sessions, only: [:create]
-  resources :attendances, only: [:create]
+  resources :attendances, only: %i[show index create]
 end
