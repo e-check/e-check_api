@@ -2,7 +2,7 @@ require 'jwt'
 
 class JwtAuthentication
   def self.generate_jwt(user_id)
-    payload = {exp: 2.hours.from_now.to_i, usr: user_id}
+    payload = { exp: 24.hours.from_now.to_i, usr: user_id }
     secret = Rails.application.secrets.secret_key_base
     JWT.encode payload, secret, 'HS256'
   end

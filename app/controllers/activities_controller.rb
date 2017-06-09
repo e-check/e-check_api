@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :authenticate_user_from_jwt
+  before_action :authenticate_user_from_jwt, only: %i[index, create]
 
   def index
     render json: Activity.all
@@ -21,11 +21,4 @@ class ActivitiesController < ApplicationController
     activity = Activity.create activity_params
     render json: activity, status: :created
   end
-
-  def destroy
-    id = params[:id]
-    Activity.destroy(id)
-  end
-
-
 end
